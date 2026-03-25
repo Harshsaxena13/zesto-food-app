@@ -1,0 +1,649 @@
+/* ============================================================
+   FooterBody.css — Zesto Food Delivery Footer
+   Matches header aesthetic: warm editorial × clean utility
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap");
+
+/* ---------- Design Tokens (mirrors header) ---------- */
+:root {
+  --brand: #ff5200;
+  --brand-light: #ff7a3d;
+  --brand-glow: rgba(255, 82, 0, 0.18);
+  --brand-badge: #ffaa00;
+
+  --footer-bg: #1a1206;
+  --footer-surface: #221808;
+  --footer-card: #2c1f0e;
+  --footer-border: rgba(255, 255, 255, 0.07);
+  --footer-border-hover: rgba(255, 82, 0, 0.35);
+
+  --footer-text-primary: #f5ede0;
+  --footer-text-secondary: #9e8e7e;
+  --footer-text-muted: #6b5e52;
+
+  --font-display: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Wave divider ---------- */
+.footer-wave {
+  line-height: 0;
+  background: #fffaf6; /* matches page bg above footer */
+}
+
+.footer-wave svg {
+  display: block;
+  width: 100%;
+  height: 60px;
+}
+
+/* ---------- Footer Shell ---------- */
+.footer {
+  font-family: var(--font-body);
+  color: var(--footer-text-primary);
+}
+
+.footer-body {
+  background: var(--footer-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial glow in top-left */
+.footer-body::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  left: -80px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 82, 0, 0.08) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.footer-body::after {
+  content: "";
+  position: absolute;
+  bottom: 60px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 170, 0, 0.05) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ---------- Main Content Row ---------- */
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 72px 40px 48px;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* ---------- Brand Column ---------- */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Logo */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.footer-logo-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(255, 82, 0, 0.4);
+  transition:
+    transform 240ms var(--ease-spring),
+    box-shadow 240ms;
+}
+
+.footer-logo:hover .footer-logo-icon {
+  transform: rotate(-6deg) scale(1.08);
+  box-shadow: 0 6px 24px rgba(255, 82, 0, 0.55);
+}
+
+.footer-logo-text {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #ff7a3d 0%, #ffaa00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Tagline */
+.footer-tagline {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--footer-text-secondary);
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Newsletter ---------- */
+.footer-newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.newsletter-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--footer-text-muted);
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.newsletter-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--footer-card);
+  border: 1.5px solid var(--footer-border);
+  border-radius: 12px;
+  padding: 0 14px;
+  height: 44px;
+  transition:
+    border-color 200ms,
+    box-shadow 200ms;
+}
+
+.newsletter-input-wrap:focus-within {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(255, 82, 0, 0.15);
+}
+
+.newsletter-input-wrap svg {
+  color: var(--footer-text-muted);
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  transition: color 200ms;
+}
+
+.newsletter-input-wrap:focus-within svg {
+  color: var(--brand);
+}
+
+.newsletter-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--footer-text-primary);
+}
+
+.newsletter-input::placeholder {
+  color: var(--footer-text-muted);
+}
+
+.newsletter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(255, 82, 0, 0.35);
+  transition:
+    transform 160ms var(--ease-spring),
+    box-shadow 160ms,
+    filter 160ms;
+}
+
+.newsletter-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(255, 82, 0, 0.45);
+  filter: brightness(1.05);
+}
+
+.newsletter-btn:active {
+  transform: scale(0.97);
+}
+
+.newsletter-success {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 12px;
+  background: rgba(255, 170, 0, 0.1);
+  border: 1.5px solid rgba(255, 170, 0, 0.3);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brand-badge);
+  animation: successPop 0.5s var(--ease-spring) both;
+}
+
+@keyframes successPop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ---------- Social ---------- */
+.footer-social {
+  display: flex;
+  gap: 10px;
+}
+
+.social-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--footer-card);
+  border: 1.5px solid var(--footer-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--footer-text-secondary);
+  text-decoration: none;
+  transition:
+    background 200ms,
+    border-color 200ms,
+    color 200ms,
+    transform 200ms var(--ease-spring),
+    box-shadow 200ms;
+}
+
+.social-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.social-btn:hover {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 6px 18px rgba(255, 82, 0, 0.4);
+}
+
+/* ---------- Nav Link Grid ---------- */
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.footer-col-heading {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-badge);
+  margin-bottom: 18px;
+}
+
+.footer-col-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--footer-text-secondary);
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  transition: color 180ms;
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--brand);
+  border-radius: 2px;
+  transition: width 220ms var(--ease-out);
+}
+
+.footer-link:hover {
+  color: var(--footer-text-primary);
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* ---------- App Download Strip ---------- */
+.footer-app-strip {
+  border-top: 1px solid var(--footer-border);
+  border-bottom: 1px solid var(--footer-border);
+}
+
+.app-strip-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.app-strip-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.app-strip-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--footer-text-muted);
+}
+
+.app-strip-headline {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--footer-text-primary);
+  letter-spacing: -0.3px;
+}
+
+.app-strip-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.app-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  background: var(--footer-card);
+  border: 1.5px solid var(--footer-border);
+  border-radius: 14px;
+  text-decoration: none;
+  transition:
+    background 200ms,
+    border-color 200ms,
+    transform 200ms var(--ease-spring),
+    box-shadow 200ms;
+}
+
+.app-btn:hover {
+  background: var(--footer-surface);
+  border-color: var(--footer-border-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.app-btn-icon {
+  color: var(--footer-text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.app-btn-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.app-btn-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.app-btn-sub {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--footer-text-muted);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.app-btn-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--footer-text-primary);
+  line-height: 1;
+  letter-spacing: -0.2px;
+}
+
+/* ---------- Cities ---------- */
+.footer-cities {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 6px;
+}
+
+.cities-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--footer-text-muted);
+  white-space: nowrap;
+  margin-right: 6px;
+}
+
+.cities-label svg {
+  width: 13px;
+  height: 13px;
+  color: var(--brand);
+}
+
+.cities-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 4px;
+}
+
+.city-link {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--footer-text-muted);
+  text-decoration: none;
+  transition: color 150ms;
+}
+
+.city-link:hover {
+  color: var(--brand);
+}
+
+.cities-dot {
+  color: var(--footer-text-muted);
+  opacity: 0.4;
+  font-size: 13px;
+  user-select: none;
+}
+
+/* ---------- Bottom Bar ---------- */
+.footer-bottom {
+  border-top: 1px solid var(--footer-border);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.footer-bottom-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer-copyright {
+  font-size: 13px;
+  color: var(--footer-text-muted);
+  line-height: 1.5;
+}
+
+.heart {
+  color: var(--brand);
+  display: inline-block;
+  animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.3);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.2);
+  }
+  56% {
+    transform: scale(1);
+  }
+}
+
+.footer-bottom-contact {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--footer-text-muted);
+  text-decoration: none;
+  transition: color 180ms;
+}
+
+.contact-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.contact-link:hover {
+  color: var(--brand);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .footer-links-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 56px 28px 40px;
+  }
+
+  .app-strip-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 28px;
+  }
+
+  .footer-cities {
+    padding: 20px 28px;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-links-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 16px;
+  }
+
+  .app-strip-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .app-btn {
+    justify-content: center;
+  }
+
+  .footer-bottom-contact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

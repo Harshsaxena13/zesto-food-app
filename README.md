@@ -19,12 +19,24 @@ Helps users make smarter and balanced choices
 
 🏗️ Architecture
 🔹 Frontend
-Built using React.js
-Responsive UI for browsing, ordering, and interacting with AI
+➵Built using React.js
+➵Responsive UI for browsing, ordering, and interacting with AI
 🔹 Backend
-Node.js + Express.js
-RESTful APIs for user, orders, and menu management
+➵Node.js + Express.js
+➵RESTful APIs for user, orders, and menu management
 🔹 Database
-MongoDB for storing users, orders, and food items
+➵MongoDB for storing users, orders, and food items
 🔹 AI Layer
-Integrated LLM (via Groq) for recommendations and conversations
+➵Integrated LLM (via Groq) for recommendations and conversations
+
+🧪 Example Use Cases
+Get personalized food suggestions
+Ask AI for healthy meal options
+Explore balanced diet combinations
+Order food with smart recommendations
+
+🚀 Future Improvements
+📍 Real-time delivery tracking
+💳 Online payment integration
+📱 Mobile app version
+🧠 Advanced nutrition-based AI recommendations

@@ -1,128 +1,38 @@
-import React, { useState, useEffect, useRef } from "react";
+import { Fragment, useState, useEffect, useRef, type RefObject } from "react";
 import "./ContentBody.css";
-
-/* ─────────────────────────────────────────
-   SVG Icons
-───────────────────────────────────────── */
-const StarIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13">
-    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-  </svg>
-);
-const ClockIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    width="13"
-    height="13"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <polyline points="12 6 12 12 16 14" />
-  </svg>
-);
-const FlameIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14">
-    <path d="M12 22c5.523 0 10-4.477 10-10 0-4.136-2.5-7.677-6.1-9.23C16.614 4.778 17 6.85 17 8c0 2.761-2.239 5-5 5a5 5 0 01-4.9-4C5.04 10.635 4 12.707 4 15c0 3.866 3.134 7 8 7z" />
-  </svg>
-);
-const TagIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    width="15"
-    height="15"
-  >
-    <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" />
-    <line x1="7" y1="7" x2="7.01" y2="7" />
-  </svg>
-);
-const ArrowRightIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    width="16"
-    height="16"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <line x1="5" y1="12" x2="19" y2="12" />
-    <polyline points="12 5 19 12 12 19" />
-  </svg>
-);
-const ShieldIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    width="28"
-    height="28"
-  >
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-  </svg>
-);
-const ZapIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    width="28"
-    height="28"
-  >
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-  </svg>
-);
-const SmileIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    width="28"
-    height="28"
-  >
-    <circle cx="12" cy="12" r="10" />
-    <path d="M8 13s1.5 2 4 2 4-2 4-2" />
-    <line x1="9" y1="9" x2="9.01" y2="9" />
-    <line x1="15" y1="9" x2="15.01" y2="9" />
-  </svg>
-);
-const LeafIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    width="28"
-    height="28"
-  >
-    <path d="M17 8C8 10 5.9 16.17 3.82 19.34a1 1 0 00.91 1.54c3.12-.32 7.51-1.74 10.18-5.88C17 11 21 7 21 7s-2 4-4 7" />
-  </svg>
-);
-const ChevronRightIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    width="18"
-    height="18"
-    strokeLinecap="round"
-  >
-    <polyline points="9 18 15 12 9 6" />
-  </svg>
-);
+import ArrowRightIcon from "./icons/ArrowRightIcon";
+import ClockIcon from "./icons/ClockIcon";
+import LeafIcon from "./icons/LeafIcon";
+import ShieldIcon from "./icons/ShieldIcon";
+import SmileIcon from "./icons/SmileIcon";
+import StarIcon from "./icons/StarIcon";
+import TagIcon from "./icons/TagIcon";
+import ZapIcon from "./icons/ZapIcon";
 
 /* ─────────────────────────────────────────
    Data
 ───────────────────────────────────────── */
+interface Restaurant {
+  id: number;
+  name: string;
+  tag: string;
+  tagColor: string;
+  cuisine: string;
+  rating: number;
+  time: string;
+  price: string;
+  offer: string;
+  image: string;
+}
+
+interface Dish {
+  name: string;
+  rest: string;
+  price: string;
+  cal: string;
+  image: string;
+}
+
 const categories = [
   { emoji: "🍕", label: "Pizza", color: "#FFF0E8" },
   { emoji: "🍔", label: "Burgers", color: "#FFF8E8" },
@@ -136,7 +46,7 @@ const categories = [
   { emoji: "🥙", label: "Wraps", color: "#EEFFF5" },
 ];
 
-const restaurants = [
+const restaurants: Restaurant[] = [
   {
     id: 1,
     name: "The Spice Route",
@@ -217,7 +127,7 @@ const restaurants = [
   },
 ];
 
-const trendingDishes = [
+const trendingDishes: Dish[] = [
   {
     name: "Butter Chicken",
     rest: "The Spice Route",
@@ -310,8 +220,10 @@ const whyUs = [
 /* ─────────────────────────────────────────
    Reusable hooks
 ───────────────────────────────────────── */
-function useInView(threshold = 0.15) {
-  const ref = useRef(null);
+function useInView<T extends Element>(
+  threshold = 0.15,
+): [RefObject<T | null>, boolean] {
+  const ref = useRef<T>(null);
   const [inView, setInView] = useState(false);
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -332,7 +244,13 @@ function useInView(threshold = 0.15) {
 /* ─────────────────────────────────────────
    Sub-components
 ───────────────────────────────────────── */
-function SectionHeader({ eyebrow, title, cta }) {
+interface SectionHeaderProps {
+  eyebrow: string;
+  title: string;
+  cta?: string;
+}
+
+function SectionHeader({ eyebrow, title, cta }: SectionHeaderProps) {
   return (
     <div className="section-header">
       <div className="section-header-left">
@@ -348,8 +266,8 @@ function SectionHeader({ eyebrow, title, cta }) {
   );
 }
 
-function RestaurantCard({ r, delay }) {
-  const [ref, inView] = useInView();
+function RestaurantCard({ r, delay }: { r: Restaurant; delay: number }) {
+  const [ref, inView] = useInView<HTMLDivElement>();
   const [liked, setLiked] = useState(false);
   return (
     <div
@@ -395,8 +313,8 @@ function RestaurantCard({ r, delay }) {
   );
 }
 
-function DishCard({ d, index }) {
-  const [ref, inView] = useInView();
+function DishCard({ d, index }: { d: Dish; index: number }) {
+  const [ref, inView] = useInView<HTMLDivElement>();
   const [added, setAdded] = useState(false);
   return (
     <div
@@ -430,8 +348,8 @@ function DishCard({ d, index }) {
 ───────────────────────────────────────── */
 export default function ContentBody() {
   const [activeCategory, setActiveCategory] = useState("Pizza");
-  const [heroRef, heroIn] = useInView(0.05);
-  const [statsRef, statsIn] = useInView();
+  const [heroRef, heroIn] = useInView<HTMLElement>(0.05);
+  const [statsRef, statsIn] = useInView<HTMLElement>();
 
   return (
     <main className="content">
@@ -528,7 +446,7 @@ export default function ContentBody() {
           { val: "4.8★", label: "App Rating" },
           { val: "24/7", label: "Support" },
         ].map(({ val, label }, i) => (
-          <React.Fragment key={val}>
+          <Fragment key={val}>
             <div className="stat-item" style={{ "--i": i }}>
               <span className="stat-val">{val}</span>
               <span className="stat-label">{label}</span>
@@ -538,7 +456,7 @@ export default function ContentBody() {
                 ·
               </span>
             )}
-          </React.Fragment>
+          </Fragment>
         ))}
       </section>
 

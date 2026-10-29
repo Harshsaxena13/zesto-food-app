@@ -1,0 +1,9 @@
+/* Rating — amber Chip with a star */
+
+.rating {
+  background: rgba(255, 170, 0, 0.12);
+  color: #b87a00;
+}
+.rating svg {
+  color: #ffaa00;
+}

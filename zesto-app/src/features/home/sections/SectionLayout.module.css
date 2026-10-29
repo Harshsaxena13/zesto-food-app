@@ -1,0 +1,19 @@
+/* Shared vertical rhythm and content width for home sections */
+
+.section {
+  padding: 72px 0;
+}
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 52px 0;
+  }
+  .inner {
+    padding: 0 20px;
+  }
+}

@@ -1,0 +1,88 @@
+/* Button — primary | ghost | dark, sm | md | lg */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+/* ── Primary (dark shares its shape and motion) ── */
+.primary,
+.dark {
+  border: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(255, 82, 0, 0.35);
+  transition:
+    transform 160ms var(--ease-spring),
+    box-shadow 160ms,
+    filter 160ms;
+}
+.primary:hover,
+.dark:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 28px rgba(255, 82, 0, 0.45);
+  filter: brightness(1.05);
+}
+.primary:active,
+.dark:active {
+  transform: scale(0.97);
+}
+
+/* ── Dark: white pill for dark surfaces ── */
+.dark {
+  background: #fff;
+  color: var(--brand);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+.dark:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Ghost ── */
+.ghost {
+  border: 1.5px solid var(--border);
+  background: none;
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition:
+    border-color 180ms,
+    color 180ms,
+    background 180ms;
+}
+.ghost:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: var(--brand-glow);
+}
+
+/* ── Sizes (ghost trims its padding to offset the border) ── */
+.sm {
+  padding: 9px 18px;
+  font-size: 13px;
+}
+.ghost.sm {
+  padding: 8px 16px;
+}
+
+.md {
+  padding: 13px 24px;
+  font-size: 15px;
+}
+.ghost.md {
+  padding: 12px 22px;
+}
+
+.lg {
+  padding: 16px 30px;
+  font-size: 17px;
+}
+.ghost.lg {
+  padding: 15px 28px;
+}

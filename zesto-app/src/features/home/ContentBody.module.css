@@ -1,0 +1,8 @@
+/* Home page content wrapper */
+
+.content {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}

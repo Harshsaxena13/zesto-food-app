@@ -1,0 +1,103 @@
+/* Partner CTA — dark banner for restaurant sign-ups */
+
+.banner {
+  position: relative;
+  background: linear-gradient(135deg, #1a1206 0%, #2c1808 50%, #1a1206 100%);
+  padding: 88px 40px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.blobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+.blob1 {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  left: -80px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 82, 0, 0.15) 0%,
+    transparent 70%
+  );
+  animation: global(blobFloat1) 10s ease-in-out infinite;
+}
+.blob2 {
+  width: 350px;
+  height: 350px;
+  bottom: -80px;
+  right: -60px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 170, 0, 0.1) 0%,
+    transparent 70%
+  );
+  animation: global(blobFloat2) 12s ease-in-out infinite;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-badge);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  color: #f5ede0;
+}
+
+.sub {
+  font-size: 16px;
+  color: rgba(245, 237, 224, 0.55);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+/* Ghost Button on the dark banner */
+.ghostOnDark {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.8);
+}
+.ghostOnDark:hover {
+  border-color: #fff;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .banner {
+    padding: 64px 20px;
+  }
+}

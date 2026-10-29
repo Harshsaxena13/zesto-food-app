@@ -1,0 +1,116 @@
+/* Why Zesto — value props (Card) */
+
+.why {
+  background: var(--surface-warm);
+  padding: 80px 0;
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  color: var(--text-primary);
+}
+
+.desc {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.card {
+  padding: 24px;
+  transition:
+    transform 200ms var(--ease-spring),
+    box-shadow 200ms;
+  animation: whyCardIn 0.6s var(--delay, 0ms) var(--ease-spring) both;
+}
+@keyframes whyCardIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.cardIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 82, 0, 0.12) 0%,
+    rgba(255, 170, 0, 0.1) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand);
+  margin-bottom: 14px;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.cardDesc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 1100px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Same as the shared section padding on mobile. */
+  .why {
+    padding: 52px 0;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .inner {
+    padding: 0 20px;
+  }
+}

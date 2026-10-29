@@ -1,0 +1,55 @@
+/* Categories — cuisine filter pills */
+
+/* Desktop only: on mobile the shared section padding applies again. */
+.categories {
+  padding-top: 0;
+}
+
+.list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  background: var(--cat-bg, var(--surface));
+  cursor: pointer;
+  transition:
+    border-color 180ms,
+    transform 180ms var(--ease-spring),
+    box-shadow 180ms;
+}
+.pill:hover {
+  border-color: var(--brand);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(255, 82, 0, 0.12);
+}
+.pillActive {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-glow);
+}
+
+.emoji {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .categories {
+    padding-top: 52px;
+  }
+}

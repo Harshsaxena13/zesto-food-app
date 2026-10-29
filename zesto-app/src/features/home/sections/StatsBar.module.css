@@ -1,0 +1,67 @@
+/* Stats bar — headline numbers */
+
+.bar {
+  background: var(--text-primary);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0 20px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.5s calc(var(--i) * 80ms) var(--ease-out),
+    transform 0.5s calc(var(--i) * 80ms) var(--ease-out);
+}
+.visible .item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.value {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  background: linear-gradient(
+    135deg,
+    var(--brand-light) 0%,
+    var(--brand-badge) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.divider {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 20px;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .bar {
+    padding: 16px 20px;
+    gap: 4px;
+  }
+  .item {
+    padding: 0 8px;
+  }
+}

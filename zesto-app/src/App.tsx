@@ -1,4 +1,4 @@
-import ContentBody from "./components/ContentBody";
+import ContentBody from "./features/home/ContentBody";
 import FooterBody from "./components/FooterBody";
 
 import HeaderBody from "./components/HeaderBody";

@@ -1,0 +1,23 @@
+/* ============================================================
+   animations.css — keyframes shared by several CSS modules
+   Reference from a module with `animation: global(name) …`.
+   ============================================================ */
+
+@keyframes blobFloat1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+}
+@keyframes blobFloat2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-20px, 25px) scale(0.95);
+  }
+}
